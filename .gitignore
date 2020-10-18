@@ -1,0 +1,10 @@
+# environment
+*Pipfile
+*Pipfile.lock
+
+# images
+*/images
+*/outputs
+
+# vs code
+*.vscode

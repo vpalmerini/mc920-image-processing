@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="trabalho-2---introdu%C3%A7%C3%A3o-ao-processamento-de-imagens-digitais">Trabalho 2 - Introdução ao Processamento de Imagens Digitais</h1>
+<h3 id="nome">Nome</h3>
+<p>Victor Palmerini</p>
+<h3 id="ra">RA</h3>
+<p>178061</p>
+<h3 id="data">Data</h3>
+<p>24/04/2020</p>
+<h2 id="conte%C3%BAdos">Conteúdos</h2>
+<p><a href="#introdu%C3%A7%C3%A3o">Introdução</a></p>
+<p><a href="#desenvolvimento">Desenvolvimento</a></p>
+<p><a href="#an%C3%A1lise">Análise</a></p>
+<p><a href="#limita%C3%A7%C3%B5es">Limitações</a></p>
+<p><a href="#bibliografia">Bibliografia</a></p>
+<h2 id="introdu%C3%A7%C3%A3o">Introdução</h2>
+<p>Este é o Trabalho 2 da disciplina <em><strong>MC920</strong> - Introdução ao Processamento de Imagens Digitais</em> da <strong>Unicamp</strong> - Universidade Estadual de Campinas.</p>
+<p>O principal objetivo deste trabalho é desenvolver uma boa noção sobre alguns filtros e suas respectivas máscaras e quais os efeitos destes em imagens digitais monocromáticas.</p>
+<p>O trabalho requer por parte do aluno um conhecimento básico da linguagem de programação <code>python</code> e bibliotecas que facilitem a manipulação das imagens digitais bem como seus processamentos. No caso deste trabalho, foram usados os pacotes <code>numpy</code>, <code>pillow</code> e <code>jupyter notebook</code>. Estes pacotes serão mencionados com mais detalhes no decorrer do relatório.</p>
+<h2 id="desenvolvimento">Desenvolvimento</h2>
+<h3 id="estrutura-do-projeto">Estrutura do Projeto</h3>
+<ol>
+<li>
+<p><code>/notebooks</code> - é a pasta que contém os notebooks com os algoritmos para serem executados pelo <code>jupyter notebook</code></p>
+</li>
+<li>
+<p><code>requirements.txt</code> - é um arquivo texto que contém as dependências para executar a aplicação (foi gerado pelo pacote <code>pip</code> através do comando <code>pip freeze &gt; requirements.txt</code>)</p>
+</li>
+<li>
+<p><code>Pipfile</code> e <code>Pipfile.lock</code> - são os arquivos relacionados ao <code>ambiente virtual</code> aonde as dependências são instaladas e executadas. Isso permite que as dependências sejam instaladas apenas no ambiente virtual e não no ambiente local.</p>
+</li>
+<li>
+<p><code>/images</code> - pasta com algumas imagens usadas como entrada para execução dos notebooks</p>
+</li>
+</ol>
+<h3 id="rodando-localmente">Rodando Localmente</h3>
+<h4 id="depend%C3%AAncias">Dependências</h4>
+<p>Para executar os notebooks é necessário instalar as seguintes dependências:</p>
+<ol>
+<li>
+<p><code>Python 3</code> - neste projeto foi usada a versão <code>3.7.3</code>. Qualquer versão do <code>python</code> a partir da <code>3</code> é suficiente.</p>
+</li>
+<li>
+<p><code>Pipenv</code> - gerenciador de ambientes virtuais. É equivalente ao <code>virtualenv</code>.</p>
+</li>
+</ol>
+<h4 id="inicializa%C3%A7%C3%A3o-do-ambiente">Inicialização do Ambiente</h4>
+<p>Na pasta root do projeto, execute os seguintes comandos em uma <code>shell</code>:</p>
+<ol>
+<li>
+<p><code>pipenv shell</code> - para iniciar um ambiente virtual localmente</p>
+</li>
+<li>
+<p><code>pipenv install -r requirements.txt</code> - instala no ambiente virtual todas as dependências listadas no arquivo <code>requirements.txt</code></p>
+</li>
+</ol>
+<h4 id="executando-os-notebooks">Executando os notebooks</h4>
+<p>Para executar os notebooks, há 2 caminhos:</p>
+<ol>
+<li>
+<p>Executar <code>jupyter notebook</code> em uma <code>shell</code> para subir um servidor do <code>jupyterlab</code> que vai abrir automaticamente o navegador padrão com o ambiente <code>jupyter</code> e as pastas e arquivos do projeto.</p>
+</li>
+<li>
+<p>Caso o projeto tenha sido aberto no <code>Visual Studio Code</code>, uma opção é instalar a extensão <code>VS Code Jupyter Notebook</code>, que permite executar os notebooks no próprio <code>VS Code</code>.</p>
+</li>
+</ol>
+<h4 id="entradas">Entradas</h4>
+<p>As entradas dos notebooks serão o <code>path</code> da imagem de entrada e o <code>path</code> da <strong>pasta</strong> de saída. As imagens de entrada utilizadas são <em>monocromáticas</em>, no formato <code>.png</code> e com 256 níveis de intensidade. Como foi falado, na pasta <code>/images</code> há algumas imagens que podem ser usadas como entrada.</p>
+<h4 id="sa%C3%ADdas">Saídas</h4>
+<p>As saídas também serão imagens <em>monocromáticas</em> no formato <code>.png</code> com o respectivo filtro aplicado.</p>
+<h3 id="implementa%C3%A7%C3%A3o-dos-processamentos">Implementação dos Processamentos</h3>
+<h4 id="m%C3%A1scaras-h1-a-h8">Máscaras h1 a h8</h4>
+<p>Os notebooks que implementam a aplicação das máscaras nas imagens de entrada estão em <code>/notebooks</code>, como já foi falado.
+A estrutura desses notebooks é muito parecida, por isso essa estrutura será discutida apenas nesta seção.</p>
+<p>Em termos de implementação, o algoritmo em questão resume-se a:</p>
+<ol>
+<li>
+<p>Importação de bibliotecas necessárias (no caso desses filtros apenas a biblioteca <code>pillow</code> foi utilizada).</p>
+</li>
+<li>
+<ul>
+<li><code>path</code> da imagem de entrada (ex: <code>../images/city.png</code>)</li>
+<li><code>path</code> da pasta de saída - (ex: <code>../outputs</code>, a pasta <code>/outputs</code> deve existir)</li>
+</ul>
+</li>
+<li>
+<p>Definir a estrutura da máscara (matriz de inteiros)</p>
+</li>
+<li>
+<p>Aplicar o filtro a partir da utilização da função <code>Filter</code> da biblioteca <code>pillow</code>. Neste, especifica-se a imagem para a qual se quer aplicar o filtro, a máscara definida, um fator pra dividir os elementos junto com a aplicação da máscara e um fator pra ser somado com os elementos junto com a aplicação da máscara.
+Esses 2 fatores serão 1 e 0, respectivamente, se nenhum valor for especificado para eles.</p>
+</li>
+<li>
+<p>Salva-se cada imagem de saída no formato <code>.png</code> na pasta de saída especificada. O nomes das imagens seguirão o padrão <code>h{k}.png</code>, em que <code>k</code> é o número associado ao filtro (<code>h5.png</code>, por exemplo).</p>
+</li>
+</ol>
+<p>Exemplo:</p>
+<ul>
+<li>Fitro com máscara <code>h6</code> (<code>/notebooks/h6.ipynb</code>)</li>
+<li>Imagem de Entrada: <code>../images/baboon.png</code></li>
+<li>Path de Saída: <code>../outputs/</code></li>
+<li>Imagem de Saída: <code>../outputs/h6.png</code></li>
+</ul>
+<p><img src="./images/city.png" alt="imagem original" title="Imagem Original"><em>Imagem Original</em></p>
+<p><img src="./outputs/h6.png" alt="imagem com filtro h6" title="Imagem com Filtro h6"><em>Imagem com Filtro <strong>h6</strong> aplicado</em></p>
+<h4 id="filtro-sqrth32--h42">Filtro sqrt(h3^2 + h4^2)</h4>
+<p>Este notebook em específico segue uma estrutura um pouco distinta dos demais, por isso sua implementação será discutida numa seção a parte. Isso porque tal filtro utiliza 2 máscaras e realiza operações sobre os resultados dessas máscaras, o que será explicado a seguir.</p>
+<p>Em termos de implementação, o algoritmo em questão resume-se a:</p>
+<ol>
+<li>
+<p>Importação de bibliotecas necessárias.</p>
+</li>
+<li>
+<ul>
+<li><code>path</code> da imagem de entrada (ex: <code>../images/baboon.png</code>)</li>
+<li><code>path</code> da pasta de saída - (ex: <code>../outputs</code>, a pasta <code>/outputs</code> deve existir)</li>
+</ul>
+</li>
+<li>
+<p>Definir a estrutura das máscaras (matriz de inteiros) <code>h3</code> e <code>h4</code>.</p>
+</li>
+<li>
+<p>Aplicação dos filtros, para cada máscara, a partir da utilização da função <code>Filter</code> da biblioteca <code>pillow</code>.
+Os resultados são armazenados em estruturas auxiliares.</p>
+</li>
+<li>
+<p>Após a aplicação dos filtros, transforma-se as imagens em <em>arrays</em> <code>numpy</code>.</p>
+</li>
+<li>
+<p>Normaliza-se as imagens para a escala <code>[0,1]</code> para aplicação da transformação quadrática (impede que os valores ultrapassem o valor de intensidade).</p>
+</li>
+<li>
+<p>Aplica-se a transformação quadrática nas 2 imagens.</p>
+</li>
+<li>
+<p>Por fim, soma-se as estruturas resultantes e aplica-se a transformação da raiz quadrada.</p>
+</li>
+<li>
+<p>Feitas todas as operações, normaliza-se as imagens de volta pra escala <code>[0,255]</code> e esta então é salva como <code>sqrt.png</code> na pasta de saída especificada.</p>
+</li>
+</ol>
+<p>Exemplo:</p>
+<ul>
+<li>Imagem de Entrada: <code>../images/baboon.png</code></li>
+<li>Path de Saída: <code>../outputs/</code></li>
+<li>Imagem de Saída: <code>../outputs/sqrt.png</code></li>
+</ul>
+<p><img src="./images/city.png" alt="imagem original" title="Imagem Original"><em>Imagem Original</em></p>
+<p><img src="./outputs/sqrt.png" alt="imagem com Filtro sqrt(h3^2 + h4^2)" title="Imagem com Filtro sqrt(h3^2 + h4^2)"><em>Imagem com Filtro <strong>sqrt(h3^2 + h4^2)</strong> aplicado</em></p>
+<h2 id="an%C3%A1lise">Análise</h2>
+<p>Como já foi dito, os filtros foram aplicados utilizando-se a função <code>Filter</code> da biblioteca <code>pillow</code>. Esta função define alguns padrões próprios que são refletidos nos efeitos aplicados sobre as imagens digitais. Um desses padrões, por exemplo, está relacionado à aplicação do filtro em pixels da borda. Nestes caso, a função <code>Filter</code> ignora esses pixels e aplica os filtros nos pixels em que a máscara consegue ser aplicada totalmente. Então pra máscaras <code>3x3</code> a função ignora <em>1 faixa</em> de pixels na borda e pra máscaras <code>5x5</code> a função ignora <em>2 faixas</em> de pixels na borda.</p>
+<p>Segue-se então uma análise para o efeito obtido pela aplicação de cada filtro. A imagem de entrada utilizada foi a seguinte:</p>
+<p><img src="./images/city.png" alt="imagem original de entrada" title="Imagem Original de Entrada"><em>Imagem Original de Entrada</em></p>
+<h4 id="filtro-h1">Filtro h1</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h1 = (
+    0,  0, -1,  0,  0,
+    0, -1, -2, -1,  0,
+   -1, -2, 16, -2, -1,
+    0, -1, -2, -1,  0,
+    0,  0, -1,  0,  0
+)
+</div></code></pre>
+<p><img src="./outputs/h1.png" alt="imagem com filtro h1" title="Imagem com Filtro h1"><em>Imagem com Filtro h1</em></p>
+<p>O efeito obtido então é um realce bem destacado das regiões com transição de intensidades de cinza contrastantes. Isso já era esperado pela análise da máscara, que valoriza o pixel central e diminui o valor dos pixels vizinhos na vertical e horizontal.</p>
+<h4 id="filtro-h2">Filtro h2</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h2 = 1/256 * (
+    1,  4,  6,  4,  1,
+    4, 16, 24, 16,  4,
+    6, 24, 36, 24,  6,
+    4, 16, 24, 16,  4,
+    1,  4,  6,  4,  1
+)
+</div></code></pre>
+<p><img src="./outputs/h2.png" alt="imagem com filtro h2" title="Imagem com Filtro h2"><em>Imagem com Filtro h2</em></p>
+<p>Com este filtro, o efeito obtido é o de <em>blur</em> da imagem como um todo. Observando-se a máscara utilizada, percebe-se que ela abrange toda a vizinhança do pixel central e ainda obtém um valor médio considerando esses vizinhos, suavizando então as transições de intensidade. Este filtro pode ser interessante para remover ruídos de uma imagem digital, por exemplo.</p>
+<h4 id="filtro-h3">Filtro h3</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h3 = (
+    -1, 0, 1,
+    -2, 0, 2,
+    -1, 0, 1,
+)
+</div></code></pre>
+<p><img src="./outputs/h3.png" alt="imagem com filtro h3" title="Imagem com Filtro h3"><em>Imagem com Filtro h3</em></p>
+<p>Percebe-se aqui que o efeito deste filtro é um realce bem destacado das regiões com transição de intensidades de cinza contrastantes, parecido com nesse sentido com o <code>Filtro 1</code>, mas aqui o filtro destaca os pixels vizinhos na direita e desvaloriza os vizinhos na esquerda. Dessa forma, o destaque fica mais nítido em regiões onde a transição de intensidades varia bastante.</p>
+<h4 id="filtro-h4">Filtro h4</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h4 = (
+    -1, -2, -1,
+     0,  0,  0,
+     1,  2,  1,
+)
+</div></code></pre>
+<p><img src="./outputs/h4.png" alt="imagem com filtro h4" title="Imagem com Filtro h4"><em>Imagem com Filtro h4</em></p>
+<p>O efeito obtido aqui é extremamente parecido com o do <code>Filtro 3</code>, o qual possui um realce bem destacado das regiões com transição de intensidades de cinza contrastantes. Porém aqui esse efeito é aplicado na direção oposta. Enquanto no <code>Filtro 3</code> o efeito é observado na direção horizontal, aqui ele é observado na direção vertical.</p>
+<h4 id="filtro-h5">Filtro h5</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h5 = (
+    -1, -1, -1,
+    -1,  8, -1,
+    -1, -1, -1,
+)
+</div></code></pre>
+<p><img src="./outputs/h5.png" alt="imagem com filtro h5" title="Imagem com Filtro h5"><em>Imagem com Filtro h5</em></p>
+<p>Aqui percebe-se um efeito parecido com o do <code>Filtro h1</code>, o que é esperado quando se compara as respectivas máscaras. O efeito de destacar as bordas e transições de intensidade é atingido mas com menos intensidade que no <code>Filtro h1</code>.</p>
+<h4 id="filtro-h6">Filtro h6</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h6 = 1/9 * (
+    1, 1, 1,
+    1, 1, 1,
+    1, 1, 1,
+)
+</div></code></pre>
+<p><img src="./outputs/h6.png" alt="imagem com filtro h6" title="Imagem com Filtro h6"><em>Imagem com Filtro h6</em></p>
+<p>Tem-se aqui um efeito parecido com o do <code>Filtro h2</code>, o de <em>blur</em>. A intensidade dos pixels da imagem resultante é obtida a partir da média das intensidades dos pixels vizinhos.</p>
+<h4 id="filtro-h7">Filtro h7</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h7 = (
+    -1, -1,  2,
+    -1,  2, -1,
+     2, -1, -1,
+)
+</div></code></pre>
+<p><img src="./outputs/h7.png" alt="imagem com filtro h7" title="Imagem com Filtro h7"><em>Imagem com Filtro h7</em></p>
+<p>Aqui percebe-se um efeito parecido com os do <code>Filtro h3</code> e <code>Filtro h4</code>, porém na direção diagonal. Isto poderia ficar intuitivo quando se compara as respectivas máscaras. O efeito de destacar as bordas e transições de intensidade é atingido mas com menos intensidade que nos filtros <code>h3</code> e <code>h4</code>.</p>
+<h4 id="filtro-h8">Filtro h8</h4>
+<p>Este filtro utiliza a seguinte máscara:</p>
+<pre class="hljs"><code><div>h8 = (
+     2, -1, -1,
+    -1,  2, -1,
+    -1, -1,  2,
+)
+</div></code></pre>
+<p><img src="./outputs/h8.png" alt="imagem com filtro h8" title="Imagem com Filtro h8"><em>Imagem com Filtro h8</em></p>
+<p>O efeito deste filtro é extremamente parecido com o do <code>Filtro h7</code>. A única diferença nítida é que aqui o efeito é atingido ainda na direção diagonal mas no sentido oposto.</p>
+<h4 id="filtro-sqrth32--h42">Filtro sqrt(h3^2 + h4^2)</h4>
+<p><img src="./outputs/sqrt.png" alt="imagem com filtro sqrt(h3^2 + h4^2)" title="Imagem com Filtro sqrt(h3^2 + h4^2)"><em>Imagem com Filtro sqrt(h3^2 + h4^2)</em></p>
+<p>Este filtro é uma mescla dos filtros <code>h3</code> e <code>h4</code> e seu efeito é muito parecido com os destes. Na operação optou-se por normalizar a intensidade pra escala <code>[0,1]</code> para evitar <code>overflow</code> dos valores e ao final da operação, volta-se pra escala <code>[0,255]</code>. Desta maneira a imagem resultante fica um pouco mais &quot;clara&quot; que as imagens dos filtros <code>h3</code> e <code>h4</code>. É possível também voltar pra escala <code>[0,255]</code> antes de aplicar a operação de raiz quadrada <code>sqrt()</code>. Neste caso a imagem resultante ficará um pouco mais &quot;escura&quot;.</p>
+<h2 id="limita%C3%A7%C3%B5es">Limitações</h2>
+<p>Os resultados obtidos neste trabalho se aplicam e se limitam às imagens quadradas, monocromáticas e no formato <code>.png</code>.</p>
+<p>Isto se deve principalmente aos tipos de processamentos implementados e às limitações das bibliotecas utilizadas.</p>
+<h2 id="bibliografia">Bibliografia</h2>
+<ol>
+<li>Documentação das bibliotecas usadas
+<ul>
+<li><a href="https://pillow.readthedocs.io/en/stable/">Pillow</a></li>
+<li><a href="https://docs.scipy.org/doc/numpy/reference/">NumPy</a></li>
+<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter Notebook</a></li>
+</ul>
+</li>
+<li><em>R.C. Gonzalez, R.E. Woods. Digital Image Processing. Prentice Hall, 2007</em>.</li>
+<li>Material de aula fornecido pelo Professor</li>
+</ol>
+
+</body>
+</html>
